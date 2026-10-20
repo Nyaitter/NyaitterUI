@@ -1,7 +1,7 @@
 {
   "name": "nyaitter-ui",
-  "version": "0.1.0",
-  "description": "依存なしの小さな UI フレームワーク（コンポーネント + 翻訳つき）",
+  "version": "0.1.1",
+  "description": "Nyaitter の画面をそろえる CSS と部品集",
   "license": "MIT",
   "repository": {
     "type": "git",
