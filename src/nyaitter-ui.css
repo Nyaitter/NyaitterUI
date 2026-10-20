@@ -1,0 +1,4 @@
+/* NyaitterUI - スタイル入り口。esbuild が CSS をまとめて dist/nyaitter-ui.css を作る。 */
+@import './css/tokens.css';
+@import './css/base.css';
+@import './css/components.css';

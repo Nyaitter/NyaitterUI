@@ -1,0 +1,235 @@
+/* ==========================================================================
+   NyaitterUI - base.css
+   .nui-root の中の普通の HTML タグを Nyaitter の見た目にする。
+   :where() で詳細度を下げ、コンポーネント class が上書きできるようにする。
+   ========================================================================== */
+
+.nui-root {
+    color: var(--nui-text);
+    font-family: var(--nui-font);
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+}
+
+.nui-root :where(h1, h2, h3, h4, h5, h6) {
+    margin: 0 0 0.5rem;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+}
+
+.nui-root :where(h1) { font-size: 1.9rem; }
+.nui-root :where(h2) { font-size: 1.5rem; }
+.nui-root :where(h3) { font-size: 1.25rem; }
+.nui-root :where(h4) { font-size: 1.05rem; }
+.nui-root :where(h5, h6) { font-size: 0.95rem; color: var(--nui-muted); }
+
+.nui-root :where(p) {
+    margin: 0 0 0.75rem;
+}
+
+.nui-root :where(a) {
+    color: var(--nui-accent);
+    text-decoration: none;
+}
+
+.nui-root :where(a:hover) {
+    text-decoration: underline;
+}
+
+.nui-root :where(small) {
+    color: var(--nui-muted);
+    font-size: 0.85rem;
+}
+
+.nui-root :where(ul, ol) {
+    margin: 0 0 0.75rem 1.25rem;
+    padding: 0;
+}
+
+.nui-root :where(li) {
+    margin: 0.25rem 0;
+}
+
+.nui-root :where(section) {
+    margin: 0 0 1rem;
+}
+
+.nui-root :where(article) {
+    box-sizing: border-box;
+    margin: 0 0 0.85rem;
+    padding: 1.1rem;
+    border: 1px solid var(--nui-border);
+    border-radius: var(--nui-radius);
+    background: var(--nui-bg);
+}
+
+.nui-root :where(hr) {
+    height: 1px;
+    margin: 1.25rem 0;
+    border: 0;
+    background: var(--nui-border);
+}
+
+.nui-root :where(blockquote) {
+    margin: 0 0 0.85rem;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid var(--nui-accent);
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--nui-accent) 8%, var(--nui-bg));
+}
+
+.nui-root :where(code, kbd) {
+    padding: 0.12em 0.4em;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--nui-muted) 15%, transparent);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+}
+
+.nui-root :where(pre) {
+    margin: 0 0 0.85rem;
+    padding: 1rem;
+    overflow-x: auto;
+    border-radius: var(--nui-radius-sm);
+    background: color-mix(in srgb, var(--nui-muted) 12%, transparent);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+}
+
+.nui-root :where(pre code) {
+    padding: 0;
+    background: transparent;
+}
+
+.nui-root :where(fieldset) {
+    margin: 0 0 1rem;
+    padding: 1rem;
+    border: 1px solid var(--nui-border);
+    border-radius: var(--nui-radius);
+}
+
+.nui-root :where(legend) {
+    padding: 0 0.4rem;
+    font-weight: 700;
+}
+
+.nui-root :where(label) {
+    display: inline-block;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.nui-root :where(input, select, textarea) {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--nui-border);
+    border-radius: var(--nui-radius-sm);
+    background: var(--nui-bg);
+    color: var(--nui-text);
+    font: inherit;
+}
+
+.nui-root :where(input[type='checkbox'], input[type='radio']) {
+    width: auto;
+    min-height: auto;
+    accent-color: var(--nui-accent);
+}
+
+.nui-root :where(textarea) {
+    min-height: 6rem;
+    resize: vertical;
+}
+
+.nui-root :where(input, select, textarea):focus-visible {
+    outline: var(--nui-focus-ring) solid var(--nui-accent);
+    outline-offset: 2px;
+}
+
+.nui-root :where(input, select, textarea):hover:not(:focus-visible):not(:disabled) {
+    border-color: var(--nui-border-strong);
+}
+
+.nui-root :where(input, select, textarea)::placeholder {
+    color: var(--nui-muted);
+    opacity: 1;
+}
+
+.nui-root :where(button) {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--nui-border);
+    border-radius: var(--nui-radius-pill);
+    background: transparent;
+    color: var(--nui-text);
+    font: inherit;
+    font-weight: 700;
+    line-height: 1.25;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s, opacity 0.15s, transform 0.1s;
+}
+
+.nui-root :where(button:hover:not(:disabled)) {
+    border-color: var(--nui-border-strong);
+    background: var(--nui-surface);
+}
+
+.nui-root :where(button:active:not(:disabled)) {
+    transform: translateY(1px);
+}
+
+.nui-root :where(button[type='submit']) {
+    border-color: transparent;
+    background: var(--nui-accent);
+    color: white;
+}
+
+.nui-root :where(button[type='submit']:hover:not(:disabled)) {
+    background: var(--nui-accent-hover);
+}
+
+.nui-root :where(button:disabled) {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.nui-root :where(button:focus-visible) {
+    outline: var(--nui-focus-ring) solid var(--nui-accent);
+    outline-offset: 2px;
+}
+
+.nui-root :where(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.nui-root :where(th, td) {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--nui-border);
+    text-align: left;
+}
+
+.nui-root :where(th) {
+    color: var(--nui-muted);
+    font-weight: 700;
+}
+
+.nui-root :where(details) {
+    margin: 0 0 0.85rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--nui-border);
+    border-radius: var(--nui-radius-sm);
+}
+
+.nui-root :where(summary) {
+    cursor: pointer;
+    font-weight: 700;
+}

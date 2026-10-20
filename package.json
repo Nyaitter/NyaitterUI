@@ -1,0 +1,58 @@
+{
+  "name": "nyaitter-ui",
+  "version": "0.1.0",
+  "description": "依存なしの小さな UI フレームワーク（コンポーネント + 翻訳つき）",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nyaitter/NyaitterUI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nyaitter/NyaitterUI/issues"
+  },
+  "homepage": "https://github.com/Nyaitter/NyaitterUI#readme",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "browser": "./dist/nyaitter-ui.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./css": "./dist/nyaitter-ui.css",
+    "./dist/*": "./dist/*"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "keywords": [
+    "nyaitter",
+    "ui",
+    "framework",
+    "components",
+    "i18n"
+  ],
+  "sideEffects": [
+    "./dist/nyaitter-ui.js",
+    "./dist/nyaitter-ui.css"
+  ],
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs && npm run build:browser && npm run build:css",
+    "build:esm": "esbuild src/index.js --bundle --format=esm --outfile=dist/index.js",
+    "build:cjs": "esbuild src/index.js --bundle --format=cjs --outfile=dist/index.cjs",
+    "build:browser": "esbuild src/index.js --bundle --format=iife --global-name=NyaitterUI --outfile=dist/nyaitter-ui.js",
+    "build:css": "esbuild src/nyaitter-ui.css --bundle --outfile=dist/nyaitter-ui.css"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
