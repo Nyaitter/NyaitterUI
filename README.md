@@ -72,6 +72,7 @@ configure({ features: { groupCreate: false } });
 
 - **レイアウト**: `nui-page` `nui-page-heading` `nui-section` `nui-section-heading` `nui-section-title` `nui-split` `nui-toolbar` `nui-row` `nui-actions` `nui-card` `nui-danger-card`（`is-interactive` でホバー）
 - **リスト**: `nui-list` `nui-list-item` `nui-list-link` `nui-list-copy` `nui-list-title` `nui-list-meta`
+- **連結リスト**: `nui-list` に `nui-list--flush` を足すと、外枠を 1 つにまとめて行の間だけを区切ります。通知や DM など、続けて読む一覧向けです。
 - **ナビ・タブ**: `nui-nav` `nui-nav-item`（`is-active` で選択中） `nui-tabs` `nui-tab`（`is-active`）
 - **フォーム**: `nui-form` `nui-field` `nui-input` `nui-help-text` `nui-toggle` `nui-toggle-input` `nui-toggle-track` `nui-toggle-thumb` `nui-toggle-label`
 - **ボタン**: `nui-button` `nui-button-secondary` `nui-button-danger`

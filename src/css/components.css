@@ -88,6 +88,39 @@
     background: var(--nui-bg);
 }
 
+/* 連結リスト: 外枠を 1 つにまとめ、行の間だけを区切る。 */
+.nui-list--flush {
+    gap: 0;
+    overflow: hidden;
+    border: 1px solid var(--nui-border);
+    border-radius: var(--nui-radius);
+    background: var(--nui-bg);
+}
+
+.nui-list--flush > .nui-list-item {
+    border: 0;
+    border-radius: 0;
+}
+
+.nui-list--flush > .nui-list-item + .nui-list-item {
+    border-top: 1px solid var(--nui-border);
+}
+
+.nui-list--flush > .nui-list-item:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.nui-list--flush > .nui-list-item:last-child {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.nui-list--flush .nui-list-link:focus-visible {
+    outline-offset: -3px;
+    border-radius: 0;
+}
+
 .nui-list-link {
     display: flex;
     width: 100%;
