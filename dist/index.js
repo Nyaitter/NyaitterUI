@@ -529,17 +529,15 @@ function normalizeMessages(value) {
 function normalizeLocale(value, fallback) {
   return typeof value === "string" && value.trim() ? value.trim() : fallback;
 }
-function readPublicConfig() {
-  const client = globalThis.NyaitterServerStatus?.client_config;
-  const ui = isPlainObject(client?.ui) ? client.ui : {};
+function createDefaultConfig() {
   return {
-    theme: THEMES.includes(ui.theme) ? ui.theme : DEFAULTS.theme,
-    accent: typeof ui.accent === "string" ? ui.accent.trim() : DEFAULTS.accent,
-    features: normalizeFeatures(ui.features),
-    locale: normalizeLocale(ui.locale, DEFAULTS.locale),
-    fallbackLocale: normalizeLocale(ui.fallbackLocale, DEFAULTS.fallbackLocale),
-    messages: normalizeMessages(ui.messages),
-    styleUrl: typeof ui.styleUrl === "string" ? ui.styleUrl.trim() : DEFAULTS.styleUrl
+    theme: DEFAULTS.theme,
+    accent: DEFAULTS.accent,
+    features: {},
+    locale: DEFAULTS.locale,
+    fallbackLocale: DEFAULTS.fallbackLocale,
+    messages: {},
+    styleUrl: DEFAULTS.styleUrl
   };
 }
 function mergeConfig(current, options) {
@@ -557,7 +555,7 @@ function mergeConfig(current, options) {
 var config = null;
 var listeners = /* @__PURE__ */ new Set();
 function getConfig() {
-  if (!config) config = readPublicConfig();
+  if (!config) config = createDefaultConfig();
   return config;
 }
 function onConfigChange(listener) {
@@ -583,12 +581,11 @@ function configure(options = {}) {
   return config;
 }
 function resetConfig() {
-  config = readPublicConfig();
+  config = createDefaultConfig();
   applyTheme();
   notify();
   return config;
 }
-if (globalThis.NyaitterServerStatus) applyTheme();
 
 // src/i18n.js
 var DEFAULT_MESSAGES = {
@@ -698,6 +695,7 @@ var CLASS_BY_KIND = Object.freeze({
   "page-heading": "nui-page-heading",
   section: "nui-section",
   card: "nui-card",
+  cover: "nui-cover",
   list: "nui-list",
   "list-item": "nui-list-item",
   nav: "nui-nav",
@@ -716,6 +714,9 @@ var CLASS_BY_KIND = Object.freeze({
   "button-danger": "nui-button-danger",
   "empty-text": "nui-empty-text"
 });
+function classForKind(kind) {
+  return CLASS_BY_KIND[kind] || "";
+}
 var SELECTOR = "[data-nui], [data-nui-feature]";
 function addClass(element, name2) {
   if (name2 && !element.classList.contains(name2)) element.classList.add(name2);
@@ -910,7 +911,7 @@ var Toggle = defineComponent({
 
 // src/version.js
 var name = "nyaitter-ui";
-var version = "0.1.0";
+var version = "0.2.0";
 var description = "\u4F9D\u5B58\u306A\u3057\u306E\u5C0F\u3055\u306A UI \u30D5\u30EC\u30FC\u30E0\u30EF\u30FC\u30AF\uFF08\u30B3\u30F3\u30DD\u30FC\u30CD\u30F3\u30C8 + \u7FFB\u8A33\u3064\u304D\uFF09";
 var repository = "https://github.com/Nyaitter/NyaitterUI";
 
@@ -966,6 +967,7 @@ var NyaitterUI = Object.freeze({
   injectStyles,
   enhance,
   upgradeElement,
+  classForKind,
   start,
   stop,
   components: components_exports
@@ -976,6 +978,7 @@ var index_default = NyaitterUI;
 export {
   Fragment,
   addMessages,
+  classForKind,
   components_exports as components,
   computed,
   configure,

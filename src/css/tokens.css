@@ -1,27 +1,23 @@
 /* ==========================================================================
    NyaitterUI - tokens.css
-   色・角丸・影などの共通トークン。Nyaitter 本体の CSS 変数があればそれを使い、
-   単体でも動くよう既定値を持たせる。アクセント色は --nui-accent で上書き。
-
-   方針: ブランドの暖色オレンジと丸みは残しつつ、装飾は境界線と控えめな影に
-   寄せてフラットに整える。角丸・余白・文字階層はここで一元的に定義する。
+   色・角丸・影などの共通トークン。単体で動く既定値を持ち、利用側の
+   :root 定義で上書きできるよう詳細度を下げている。
    ========================================================================== */
 
-:root {
+:where(:root) {
     /* --- 色 ------------------------------------------------------------- */
-    --nui-accent: var(--primary-color, #ff9900);
-    --nui-accent-hover: var(--primary-hover-color, #e88b00);
-    --nui-border: var(--border-color, #eff3f4);
+    --nui-accent: #ff9900;
+    --nui-accent-hover: #e88b00;
+    --nui-border: #eff3f4;
     /* 入力/操作の hover や区切りに使う、やや強い境界線。 */
     --nui-border-strong: color-mix(in srgb, var(--nui-muted) 55%, var(--nui-border));
-    --nui-bg: var(--main-bg-color, #ffffff);
-    --nui-surface: var(--bg-color, #f9f9f9);
-    --nui-text: var(--text-color, #0f1419);
-    /* ミュートはテーマ (ライト/ダーク) 双方で階層が保てるよう、本文色と背景の
-       混合で作る。Nyaitter 本体の secondary 色はダークで白になる場合があるため。 */
+    --nui-bg: #ffffff;
+    --nui-surface: #f9f9f9;
+    --nui-text: #0f1419;
+    /* ミュートはテーマ (ライト/ダーク) 双方で階層が保てるよう、本文色と背景の混合で作る。 */
     --nui-muted: color-mix(in srgb, var(--nui-text) 70%, var(--nui-bg));
-    --nui-danger: var(--like-color, #f91880);
-    --nui-danger-bg: var(--danger-color, #fef0f4);
+    --nui-danger: #d92d20;
+    --nui-danger-bg: #fef0f4;
 
     /* --- 角丸 (小=入力/小物, 標準=面, 大=カード/モーダル, 丸=ボタン/バッジ) -- */
     --nui-radius-sm: 8px;

@@ -1,4 +1,4 @@
-// NyaitterUI の設定。公開設定 (NyaitterServerStatus.client_config.ui) があれば初期値にし、無くても既定値で動く。
+// NyaitterUI の設定。既定値だけを持ち、利用側が configure() で上書きする。
 
 const THEMES = ['auto', 'light', 'dark'];
 
@@ -38,17 +38,15 @@ function normalizeLocale(value, fallback) {
     return typeof value === 'string' && value.trim() ? value.trim() : fallback;
 }
 
-function readPublicConfig() {
-    const client = globalThis.NyaitterServerStatus?.client_config;
-    const ui = isPlainObject(client?.ui) ? client.ui : {};
+function createDefaultConfig() {
     return {
-        theme: THEMES.includes(ui.theme) ? ui.theme : DEFAULTS.theme,
-        accent: typeof ui.accent === 'string' ? ui.accent.trim() : DEFAULTS.accent,
-        features: normalizeFeatures(ui.features),
-        locale: normalizeLocale(ui.locale, DEFAULTS.locale),
-        fallbackLocale: normalizeLocale(ui.fallbackLocale, DEFAULTS.fallbackLocale),
-        messages: normalizeMessages(ui.messages),
-        styleUrl: typeof ui.styleUrl === 'string' ? ui.styleUrl.trim() : DEFAULTS.styleUrl,
+        theme: DEFAULTS.theme,
+        accent: DEFAULTS.accent,
+        features: {},
+        locale: DEFAULTS.locale,
+        fallbackLocale: DEFAULTS.fallbackLocale,
+        messages: {},
+        styleUrl: DEFAULTS.styleUrl,
     };
 }
 
@@ -71,7 +69,7 @@ let config = null;
 const listeners = new Set();
 
 export function getConfig() {
-    if (!config) config = readPublicConfig();
+    if (!config) config = createDefaultConfig();
     return config;
 }
 
@@ -103,11 +101,8 @@ export function configure(options = {}) {
 }
 
 export function resetConfig() {
-    config = readPublicConfig();
+    config = createDefaultConfig();
     applyTheme();
     notify();
     return config;
 }
-
-// 公開設定があるときは読み込み時にテーマ/アクセントを一度反映する。
-if (globalThis.NyaitterServerStatus) applyTheme();

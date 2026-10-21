@@ -1,6 +1,6 @@
 // data-nui の印を付けた素の HTML を変換する。
 //   <button data-nui="button">   → class="nui-button"
-//   <div data-nui-feature="groupCreate">  → features が false なら hidden
+//   <div data-nui-feature="exampleFeature">  → features が false なら hidden
 // コンポーネント API を使わず文字列テンプレートで組む場合の薄い層。
 import { getConfig, onConfigChange } from './config.js';
 
@@ -9,6 +9,7 @@ const CLASS_BY_KIND = Object.freeze({
     'page-heading': 'nui-page-heading',
     section: 'nui-section',
     card: 'nui-card',
+    cover: 'nui-cover',
     list: 'nui-list',
     'list-item': 'nui-list-item',
     nav: 'nui-nav',
@@ -27,6 +28,10 @@ const CLASS_BY_KIND = Object.freeze({
     'button-danger': 'nui-button-danger',
     'empty-text': 'nui-empty-text',
 });
+
+export function classForKind(kind) {
+    return CLASS_BY_KIND[kind] || '';
+}
 
 const SELECTOR = '[data-nui], [data-nui-feature]';
 

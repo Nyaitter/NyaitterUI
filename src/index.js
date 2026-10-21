@@ -11,7 +11,7 @@ import {
     translateNodes,
 } from './i18n.js';
 import { configure, getConfig, resetConfig } from './config.js';
-import { enhance, upgradeElement, start, stop } from './enhance.js';
+import { enhance, upgradeElement, classForKind, start, stop } from './enhance.js';
 import * as components from './components.js';
 import { name, version, description, repository } from './version.js';
 
@@ -70,6 +70,7 @@ const NyaitterUI = Object.freeze({
     injectStyles,
     enhance,
     upgradeElement,
+    classForKind,
     start,
     stop,
     components,
@@ -103,6 +104,7 @@ export {
     resetConfig,
     enhance,
     upgradeElement,
+    classForKind,
     start,
     stop,
     components,

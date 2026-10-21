@@ -1,28 +1,26 @@
 # NyaitterUI
 
-Nyaitter の画面をそろえる CSS と、依存なしの小さな部品集です。CSS を 1 行読み込み、HTML に `data-nui` を付けるだけで使えます。
+Nyaitter の画面をそろえる CSS と、依存なしの小さな部品集です。
 
-## 最短で使う
+## 使い始める
+CSS を読み込み、HTML に `data-nui` を付けます。
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nyaitter-ui/dist/nyaitter-ui.css">
 
 <main data-nui="page">
-  <h1 data-nui="page-heading">設定</h1>
-  <section data-nui="section">…</section>
+  <h3 data-nui="page-heading">設定</h3>
   <button data-nui="button">保存</button>
 </main>
 ```
 
-これだけで Nyaitter の見た目になります。JavaScript は不要です。
-
-`nyaitter-ui.js` を読み込むと、後から追加された要素も自動で変換されます。
+`nyaitter-ui.js` を追加すると、後から追加した要素も自動で変換されます。
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/nyaitter-ui/dist/nyaitter-ui.js"></script>
 ```
 
-npm やバンドラで使う場合:
+npm / バンドラの場合:
 
 ```js
 import 'nyaitter-ui/css';
@@ -31,9 +29,10 @@ import { injectStyles } from 'nyaitter-ui';
 injectStyles();
 ```
 
-## `data-nui="<種類>"`
+## リファレンス
 
-付けた要素に `nui-<種類>` クラスを付けます。見た目は CSS 側で決まります。
+### `data-nui` / `data-nui-feature`
+`data-nui` は要素に `nui-<種類>` クラスを付けます。
 
 | 種類 | 付くクラス | 種類 | 付くクラス |
 | --- | --- | --- | --- |
@@ -47,44 +46,36 @@ injectStyles();
 | `badge` | `nui-badge` | `avatar` | `nui-avatar` |
 | `icon` | `nui-icon` | `button` | `nui-button` |
 | `button-secondary` | `nui-button-secondary` | `button-danger` | `nui-button-danger` |
-| `empty-text` | `nui-empty-text` | | |
+| `empty-text` | `nui-empty-text` | `cover` | `nui-cover` |
 
-手動で変換するときは `enhance(root)`、1 要素だけなら `upgradeElement(el)` を使います。
+手動変換は `enhance(root)`、1 要素だけなら `upgradeElement(el)` を使います。
 
-## `data-nui-feature="名前"`
-
-設定の `features` が `false` のときだけ要素を隠します。未設定なら表示されます。右上のメニューなど、機能ごとに出し分けたい部分に使います。
+`data-nui-feature` は設定の `features` が `false` のときだけ要素を隠します（未設定なら表示）。
 
 ```html
-<div data-nui-feature="groupCreate">グループ作成</div>
+<div data-nui-feature="exampleFeature">表示を切り替える要素</div>
 ```
 
 ```js
-import { configure } from 'nyaitter-ui';
-configure({ features: { groupCreate: false } });
+configure({ features: { exampleFeature: false } });
 ```
 
-`configure()` で切り替えると、表示中の要素にもすぐ反映されます。
+`configure()` の変更は表示中の要素にもすぐ反映されます。
 
-## 使えるクラス（`nui-*`）
+### クラス（`nui-*`）
+`data-nui` を使わず、直接付けても同じ見た目になります。
 
-`data-nui` を使わず、クラスを直接付けても同じ見た目になります。
-
-- **レイアウト**: `nui-page` `nui-page-heading` `nui-section` `nui-section-heading` `nui-section-title` `nui-split` `nui-toolbar` `nui-row` `nui-actions` `nui-card` `nui-danger-card`（`is-interactive` でホバー）
-- **リスト**: `nui-list` `nui-list-item` `nui-list-link` `nui-list-copy` `nui-list-title` `nui-list-meta`
-- **連結リスト**: `nui-list` に `nui-list--flush` を足すと、外枠を 1 つにまとめて行の間だけを区切ります。通知や DM など、続けて読む一覧向けです。
-- **ナビ・タブ**: `nui-nav` `nui-nav-item`（`is-active` で選択中） `nui-tabs` `nui-tab`（`is-active`）
+- **レイアウト**: `nui-page` `nui-page-heading` `nui-section` `nui-section-heading` `nui-section-title` `nui-split` `nui-toolbar` `nui-row` `nui-actions` `nui-card` `nui-cover` `nui-danger-card`（`is-interactive` でホバー）
+- **リスト**: `nui-list` `nui-list-item` `nui-list-link` `nui-list-copy` `nui-list-title` `nui-list-meta`。`nui-list--flush` で外枠を 1 つにまとめます。
+- **ナビ・タブ**: `nui-nav` `nui-nav-item`（`is-active` / `active` で選択中） `nui-tabs` `nui-tab`（`is-active` / `active`）
 - **フォーム**: `nui-form` `nui-field` `nui-input` `nui-help-text` `nui-toggle` `nui-toggle-input` `nui-toggle-track` `nui-toggle-thumb` `nui-toggle-label`
 - **ボタン**: `nui-button` `nui-button-secondary` `nui-button-danger`
 - **表示**: `nui-badge`（`nui-badge-accent` / `nui-badge-danger`） `nui-avatar` `nui-icon` `nui-heading` `nui-empty-text` `nui-link` `nui-stat`
-- **テーブル**: `nui-table-wrap` `nui-table`
-- **モーダル**: `nui-modal-backdrop` `nui-modal` `nui-modal-title` `nui-modal-body`
-- **プロフィール・管理**: `nui-profile` `nui-profile-header` `nui-profile-main` `nui-profile-avatar` `nui-profile-copy` `nui-profile-actions` `nui-manage-detail`
-- **ルート**: `nui-root`（`createApp` が自動で付けます）
+- **テーブル・モーダル**: `nui-table-wrap` `nui-table` `nui-modal-backdrop` `nui-modal` `nui-modal-title` `nui-modal-body`
+- **ルート**: `nui-root`（`createApp` が自動で付けます。CSS だけ使う場合も base スタイルを使うなら付けてください）
 
-## 色と角丸を変える
-
-CSS 変数か `configure({ theme, accent })` で変更できます。
+### テーマ
+色と角丸は CSS 変数か `configure({ theme, accent })` で変更できます。
 
 | 変数 | 用途 | 変数 | 用途 |
 | --- | --- | --- | --- |
@@ -95,103 +86,74 @@ CSS 変数か `configure({ theme, accent })` で変更できます。
 | `--nui-text` | 文字 | `--nui-shadow` | 影 |
 | `--nui-muted` | 補助文字 | | |
 
-テーマは `<html data-nui-theme="light|dark|auto">` で切り替えます。`auto` は OS の設定に合わせます。
+`<html data-nui-theme="light|dark|auto">` で切り替えます。`auto` は OS の設定に従います。
 
-## 翻訳（i18n）
-
+### 翻訳（i18n）
 ```js
 import { addMessages, setLocale, t } from 'nyaitter-ui';
 
 addMessages('ja', { greeting: 'こんにちは、{name}さん', menu: { home: 'ホーム' } });
 addMessages('en', { greeting: 'Hello, {name}!', menu: { home: 'Home' } });
-
 setLocale('en');
-t('greeting', { name: 'Nyaitter' });
-t('menu.home');
+t('greeting', { name: 'Nyaitter' }); // Hello, Nyaitter!
 ```
 
-- キーはドットで入れ子をたどります（`menu.home`）。
-- `{name}` は第 2 引数で置き換えます。
-- 見つからない場合は言語の基本部分（`en-US` → `en`）、次に `fallbackLocale`（既定 `ja`）、それでも無ければキーをそのまま返します。
-- `setLocale()` を呼ぶと、`t()` を使っているコンポーネントは自動で描き直されます。
+キーはドット区切り、`{name}` は第 2 引数で置換します。見つからない場合は基本言語（`en-US` → `en`）→ `fallbackLocale`（既定 `ja`）→ キーの順で解決します。`setLocale()` は `t()` を使うコンポーネントを描き直します。
 
-## コンポーネントで書く（任意）
-
-CSS クラスを JavaScript から組み立てたい場合に使います。
+### コンポーネント
+JavaScript から組み立てる場合に使います。
 
 ```js
-import { h, ref, defineComponent, createApp, t, components } from 'nyaitter-ui';
+import { h, ref, defineComponent, createApp, components } from 'nyaitter-ui';
 
 const App = defineComponent({
-  setup() { return { count: ref(0) }; },
-  render(ctx) {
-    return h('div', { class: 'nui-card' },
-      h('h1', null, t('greeting', { name: 'Nyaitter' })),
-      h(components.Button, { variant: 'primary', onClick: () => ctx.count.value++ }, `クリック ${ctx.count.value}`),
-    );
-  },
+  setup: () => ({ count: ref(0) }),
+  render: ({ count }) => h('div', { class: 'nui-card' },
+    h(components.Button, { onClick: () => count.value++ }, `クリック ${count.value}`)),
 });
-
 createApp(App).mount(document.getElementById('app'));
 ```
 
 `components` には `Button`、`Input`、`Card`、`Toggle`、`Tabs`、`Modal` があります。
 
-## 設定
-
+### 設定
 ```js
-import { configure } from 'nyaitter-ui';
-
 configure({
-  theme: 'auto',
-  accent: '#ff9900',
-  locale: 'ja',
-  fallbackLocale: 'ja',
-  messages: { ja: { hello: 'やあ' } },
-  features: { groupCreate: false },
-  styleUrl: '',
+  theme: 'auto', accent: '#ff9900', locale: 'ja', fallbackLocale: 'ja',
+  messages: { ja: { hello: 'やあ' } }, features: { exampleFeature: false }, styleUrl: '',
 });
 ```
 
-`NyaitterServerStatus.client_config.ui` があれば、それを初期値にします。設定が無くても既定値だけで動きます。
+設定が無くても既定値で動きます。クライアント側で取得した設定を `configure()` に渡してください。
 
-## 公開 API
-
-`import { ... } from 'nyaitter-ui'` と、ブラウザの `globalThis.NyaitterUI` から使えます。
+### 公開 API
+`import { ... } from 'nyaitter-ui'` と `globalThis.NyaitterUI` から使えます。
 
 | API | 説明 |
 | --- | --- |
 | `h(type, props, ...children)` / `Fragment` | 仮想ノードを作る |
 | `render(vnode, container)` | その場に描画する |
-| `defineComponent(options)` / `createApp(component, props?)` | 部品を定義する / アプリを `mount`・`unmount` する |
+| `defineComponent(options)` / `createApp(component, props?)` | 部品の定義 / アプリの `mount`・`unmount` |
 | `ref` / `computed` / `effect` / `watch` | リアクティブな値 |
 | `t(key, params?)` / `useI18n()` | 翻訳する |
 | `setLocale` / `getLocale` / `addMessages` / `setMessages` / `translateNodes` | 言語の切り替え、翻訳の登録 |
 | `configure` / `getConfig` / `resetConfig` | 設定の上書き・取得・初期化 |
-| `enhance(root?)` / `upgradeElement(el)` | `data-nui` を手動で変換する |
-| `start(root?)` / `stop()` | 自動変換の開始・停止 |
-| `injectStyles(url?)` | CSS を読み込む |
-| `components` | 付属コンポーネント |
-| `name` / `version` / `description` / `repository` | パッケージ情報 |
+| `enhance(root?)` / `upgradeElement(el)` / `classForKind(kind)` | `data-nui` の変換、種類に対応するクラス名の取得 |
+| `start(root?)` / `stop()` / `injectStyles(url?)` | 自動変換の開始・停止 / CSS の読み込み |
+| `components` / `name` / `version` / `description` / `repository` | 付属コンポーネント / パッケージ情報 |
 
 ## 開発
-
 ```bash
 npm install
 npm run build
 ```
 
-`dist/` に次のファイルができます。
-
-- `index.js`（ESM）
-- `index.cjs`（CJS）
-- `nyaitter-ui.js`（ブラウザ用。`NyaitterUI` を定義）
-- `nyaitter-ui.css`
+`dist/` に `index.js`（ESM）、`index.cjs`（CJS）、`nyaitter-ui.js`（ブラウザ用、`NyaitterUI`）、`nyaitter-ui.css` ができます。
 
 ## 公開
+GitHub Actions は、GitHub Release の公開・ワークフローの手動実行・`package.json` の変更を `main` に push したときに動きます。バージョンが変わっていない場合、または同じバージョンが npm に公開済みの場合はスキップされます。公開前に `package.json` のバージョンを更新してください。
 
-GitHub Release を公開すると、GitHub Actions がビルドして npm に公開します。初回だけ、npm の Trusted Publisher に GitHub リポジトリと `.github/workflows/publish.yml` を登録してください。公開前に `package.json` のバージョンを更新します。npm トークンを GitHub に登録する必要はありません。
+初回だけ、npm の Trusted Publisher に GitHub リポジトリと `.github/workflows/publish.yml` を登録します。npm トークンを GitHub に登録する必要はありません。
 
 ## ライセンス
-
 MIT License

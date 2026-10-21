@@ -1,6 +1,6 @@
 {
   "name": "nyaitter-ui",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Nyaitter の画面をそろえる CSS と部品集",
   "license": "MIT",
   "repository": {
@@ -36,6 +36,8 @@
     "i18n"
   ],
   "sideEffects": [
+    "./dist/index.js",
+    "./dist/index.cjs",
     "./dist/nyaitter-ui.js",
     "./dist/nyaitter-ui.css"
   ],

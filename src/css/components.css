@@ -329,7 +329,8 @@
     outline-offset: -2px;
 }
 
-.nui-tab.is-active {
+.nui-tab.is-active,
+.nui-tab.active {
     border-bottom-color: var(--nui-accent);
     color: var(--nui-accent);
 }
@@ -663,60 +664,16 @@
     display: none !important;
 }
 
-/* プロフィールカード。ヘッダー画像・アバター・本文・操作を1枚にまとめる。 */
-.nui-profile {
-    padding: 0;
-    overflow: hidden;
-}
-
-.nui-profile-header {
+/* 画像・バナーを表示する領域。 */
+.nui-cover {
     height: clamp(7rem, 18vw, 13rem);
+    overflow: hidden;
     background: var(--nui-surface);
 }
 
-.nui-profile-header img {
+.nui-cover img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.nui-profile-main {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-}
-
-.nui-profile-avatar {
-    width: 76px;
-    height: 76px;
-}
-
-.nui-profile-copy {
-    display: grid;
-    gap: 0.35rem;
-    min-width: 0;
-}
-
-.nui-profile-copy h3,
-.nui-profile-copy p {
-    margin: 0;
-}
-
-.nui-profile-copy > p:last-child {
-    line-height: 1.55;
-    white-space: pre-wrap;
-}
-
-.nui-profile-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.nui-manage-detail {
-    min-width: 0;
 }
