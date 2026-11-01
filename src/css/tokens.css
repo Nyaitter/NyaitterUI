@@ -8,6 +8,8 @@
     /* --- 色 ------------------------------------------------------------- */
     --nui-accent: #ff9900;
     --nui-accent-hover: #e88b00;
+    --nui-accent-text: #8a5200;
+    --nui-accent-on: #1f1f1f;
     --nui-border: #eff3f4;
     /* 入力/操作の hover や区切りに使う、やや強い境界線。 */
     --nui-border-strong: color-mix(in srgb, var(--nui-muted) 55%, var(--nui-border));
@@ -37,11 +39,13 @@
 
 /* 単体で使うときのダークモード。テーマは data-nui-theme で切り替える。 */
 [data-nui-theme='dark'] {
+    --nui-accent-on: #1f1f1f;
     --nui-border: #2f363d;
     --nui-bg: #1c1d21;
     --nui-surface: #18191d;
     --nui-text: #ffffff;
     --nui-muted: #c9ccd1;
+    --nui-accent-text: #ffb84d;
     --nui-danger-bg: #610525;
     --nui-shadow: 0 1px 2px rgb(0 0 0 / 35%);
     --nui-shadow-md: 0 8px 24px rgb(0 0 0 / 40%);
@@ -49,11 +53,13 @@
 
 @media (prefers-color-scheme: dark) {
     [data-nui-theme='auto'] {
+        --nui-accent-on: #1f1f1f;
         --nui-border: #2f363d;
         --nui-bg: #1c1d21;
         --nui-surface: #18191d;
         --nui-text: #ffffff;
         --nui-muted: #c9ccd1;
+        --nui-accent-text: #ffb84d;
         --nui-danger-bg: #610525;
         --nui-shadow: 0 1px 2px rgb(0 0 0 / 35%);
         --nui-shadow-md: 0 8px 24px rgb(0 0 0 / 40%);

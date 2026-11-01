@@ -29,7 +29,7 @@
 }
 
 .nui-root :where(a) {
-    color: var(--nui-accent);
+    color: var(--nui-accent-text);
     text-decoration: none;
 }
 
@@ -136,7 +136,7 @@
 .nui-root :where(input[type='checkbox'], input[type='radio']) {
     width: auto;
     min-height: auto;
-    accent-color: var(--nui-accent);
+    accent-color: var(--nui-accent-text);
 }
 
 .nui-root :where(textarea) {
@@ -145,7 +145,7 @@
 }
 
 .nui-root :where(input, select, textarea):focus-visible {
-    outline: var(--nui-focus-ring) solid var(--nui-accent);
+    outline: var(--nui-focus-ring) solid var(--nui-accent-text);
     outline-offset: 2px;
 }
 
@@ -188,7 +188,7 @@
 .nui-root :where(button[type='submit']) {
     border-color: transparent;
     background: var(--nui-accent);
-    color: white;
+    color: var(--nui-accent-on);
 }
 
 .nui-root :where(button[type='submit']:hover:not(:disabled)) {
@@ -201,7 +201,7 @@
 }
 
 .nui-root :where(button:focus-visible) {
-    outline: var(--nui-focus-ring) solid var(--nui-accent);
+    outline: var(--nui-focus-ring) solid var(--nui-accent-text);
     outline-offset: 2px;
 }
 

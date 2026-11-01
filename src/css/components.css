@@ -132,7 +132,7 @@
 }
 
 .nui-list-link:focus-visible {
-    outline: var(--nui-focus-ring) solid var(--nui-accent);
+    outline: var(--nui-focus-ring) solid var(--nui-accent-text);
     outline-offset: 3px;
     border-radius: var(--nui-radius-sm);
 }
@@ -209,7 +209,7 @@
 .nui-badge-accent,
 .nui-badge-primary {
     background: color-mix(in srgb, var(--nui-accent) 14%, transparent);
-    color: var(--nui-accent);
+    color: var(--nui-accent-text);
 }
 
 .nui-badge-danger {
@@ -254,13 +254,13 @@
 
 .nui-nav-item.is-active,
 .nui-nav-item.active {
-    color: var(--nui-accent);
+    color: var(--nui-accent-text);
     background: color-mix(in srgb, var(--nui-accent) 10%, transparent);
     border-color: color-mix(in srgb, var(--nui-accent) 25%, transparent);
 }
 
 .nui-nav-item:focus-visible {
-    outline: var(--nui-focus-ring) solid var(--nui-accent);
+    outline: var(--nui-focus-ring) solid var(--nui-accent-text);
     outline-offset: 2px;
 }
 
@@ -325,14 +325,14 @@
 
 .nui-tab:focus-visible {
     color: var(--nui-text);
-    outline: var(--nui-focus-ring) solid var(--nui-accent);
+    outline: var(--nui-focus-ring) solid var(--nui-accent-text);
     outline-offset: -2px;
 }
 
 .nui-tab.is-active,
 .nui-tab.active {
-    border-bottom-color: var(--nui-accent);
-    color: var(--nui-accent);
+    border-bottom-color: var(--nui-accent-text);
+    color: var(--nui-accent-text);
 }
 
 .nui-form {
@@ -371,7 +371,7 @@
 .nui-form input:focus-visible,
 .nui-form textarea:focus-visible,
 .nui-form select:focus-visible {
-    outline: var(--nui-focus-ring) solid var(--nui-accent);
+    outline: var(--nui-focus-ring) solid var(--nui-accent-text);
     outline-offset: 2px;
 }
 
@@ -409,7 +409,7 @@
 .nui-button {
     border: 1px solid transparent;
     background: var(--nui-accent);
-    color: white;
+    color: var(--nui-accent-on);
 }
 
 .nui-button:hover:not(:disabled) {
@@ -453,7 +453,7 @@
 .nui-button:focus-visible,
 .nui-button-secondary:focus-visible,
 .nui-button-danger:focus-visible {
-    outline: var(--nui-focus-ring) solid var(--nui-accent);
+    outline: var(--nui-focus-ring) solid var(--nui-accent-text);
     outline-offset: 2px;
 }
 
@@ -476,7 +476,7 @@
     padding: 0.75rem 0.8rem;
     border: 1px solid var(--nui-border);
     border-radius: var(--nui-radius-sm);
-    color: var(--nui-accent);
+    color: var(--nui-accent-text);
     font-size: 0.85rem;
     font-weight: 700;
     text-decoration: none;
@@ -526,7 +526,7 @@
 }
 
 .nui-stat :where(strong, b) {
-    color: var(--nui-accent);
+    color: var(--nui-accent-text);
     font-size: 1.4rem;
     font-variant-numeric: tabular-nums;
 }
@@ -544,7 +544,7 @@
 }
 
 .nui-input:focus-visible {
-    outline: var(--nui-focus-ring) solid var(--nui-accent);
+    outline: var(--nui-focus-ring) solid var(--nui-accent-text);
     outline-offset: 2px;
 }
 
@@ -637,7 +637,7 @@
 }
 
 .nui-toggle-input:focus-visible + .nui-toggle-track {
-    outline: 2px solid var(--nui-accent);
+    outline: 2px solid var(--nui-accent-text);
     outline-offset: 2px;
 }
 
