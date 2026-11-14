@@ -66,7 +66,7 @@ configure({ features: { exampleFeature: false } });
 `data-nui` を使わず、直接付けても同じ見た目になります。
 
 - **レイアウト**: `nui-page` `nui-page-heading` `nui-section` `nui-section-heading` `nui-section-title` `nui-split` `nui-toolbar` `nui-row` `nui-actions` `nui-card` `nui-cover` `nui-danger-card`（`is-interactive` でホバー）
-- **リスト**: `nui-list` `nui-list-item` `nui-list-link` `nui-list-copy` `nui-list-title` `nui-list-meta`。`nui-list--flush` で外枠を 1 つにまとめます。
+- **リスト**: `nui-list` `nui-list-item` `nui-list-link` `nui-list-copy` `nui-list-title` `nui-list-meta`。`nui-list--flush` で外枠を 1 つにまとめます。高さが限られた範囲では、要素の中でスクロールします。
 - **ナビ・タブ**: `nui-nav` `nui-nav-item`（`is-active` / `active` で選択中） `nui-tabs` `nui-tab`（`is-active` / `active`）
 - **フォーム**: `nui-form` `nui-field` `nui-input` `nui-help-text` `nui-toggle` `nui-toggle-input` `nui-toggle-track` `nui-toggle-thumb` `nui-toggle-label`
 - **ボタン**: `nui-button` `nui-button-secondary` `nui-button-danger`
